@@ -58,3 +58,63 @@ switch ($op) {
         echo "la operacion es incorrecta";
         break;
 }
+
+// ---------------------------------------
+
+#while
+echo "<hr/>";
+$a = 0;
+while ($a <= 10) {
+    echo "<br> $a";
+    // $a++;
+    $a = $a + 2;
+}
+echo "<hr/>";
+#dowhile
+$a = 1;
+do {
+    echo "<br> $a";
+    $a++;
+} while ($a <= 20);
+echo "<hr/>";
+#for
+$x = 0;
+for ($i = 10; $i >= $x; $i = $i - 2) {
+    echo "<br> $i";
+}
+// -----------------------------------
+
+echo "<hr/>";
+// function
+$nombre = "osvaldo";
+
+function saludar($name = "mesi")
+{
+    echo "Hola $name";
+}
+
+saludar("chayane");
+echo "<hr/>";
+saludar($nombre);
+saludar();
+
+echo "<hr/>";
+
+function decirHola()
+{
+    echo "hola";
+}
+decirHola();
+
+// funcione anonimas
+
+$funcionAnonima = function () {
+    echo "soy una funcion anonima";
+};
+
+echo "<hr/>";
+
+
+// hacer funcion que imprima del 0 al 20 y que en el numero par no imprima el numero, sino que imprima la palaque se le pase pro parametro y si no le paso un parametro que imprima "soy de Mesi"
+
+
