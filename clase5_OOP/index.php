@@ -8,7 +8,21 @@ $alumno = new Alumno();
 $alumno->setData("Paco", "Mer", 30);
 $alumno->setCurso("Php");
 $alumnoData = $alumno->getData();
-print_r($alumnoData)
+
+$perro = new Mascota("Canela", "marron");
+$perroData = $perro->getData();
+
+print_r($perroData);
+
+Mascota::saludar();
+// $mascotaedad=Mascota::EDAD;
+// $mascotaedad=3;
+
+// echo $mascotaedad;
+// echo "<br>";
+// echo Mascota::EDAD
+
+
 ?>
 
 <!DOCTYPE html>

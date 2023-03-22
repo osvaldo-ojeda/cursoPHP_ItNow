@@ -6,6 +6,7 @@ class Persona
     private $apellido;
     private $edad;
 
+
     function setData($nombre, $apellido, $edad)
     {
         $this->nombre = $nombre;
@@ -37,5 +38,45 @@ class Alumno extends Persona
         $alumno = Persona::getData();
         array_push($alumno, $this->curso);
         return $alumno;
+    }
+}
+
+// Forma 1
+// class Mascota
+// {
+//     private $nombre;
+//     private $color;
+//     function Mascota($nombre, $color)
+//     {
+//         $this->nombre = $nombre;
+//         $this->color = $color;
+//     }
+// }
+// forma 2
+
+class Mascota
+{
+    private $nombre;
+    private $color;
+    const EDAD = 2;
+    function __construct($nombre, $color)
+    {
+        $this->nombre = $nombre;
+        $this->color = $color;
+    }
+
+    function getData()
+    {
+        return [$this->nombre, $this->color, $this::EDAD];
+    }
+
+    function __destruct()
+    {
+        echo "objeto destruido";
+    }
+
+    static function saludar()
+    {
+        echo "hola tengo " . Mascota::EDAD;
     }
 }
