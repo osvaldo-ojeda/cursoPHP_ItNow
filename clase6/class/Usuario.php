@@ -8,15 +8,22 @@ class Usuario
 
     function getUsuarios()
     {
-        $db=Connection::connect();
-        $sql="SELECT id, nombre, apellido FROM usuarios";
-        $stmt =$db->prepare($sql);
+        $db = Connection::connect();
+        $sql = "SELECT id, nombre, apellido FROM usuarios";
+        $stmt = $db->prepare($sql);
         $stmt->execute();
-        $usuarios=$stmt->fetchObject();
+        $usuarios = $stmt->fetchAll();
         return $usuarios;
     }
-    function getUsuario()
+    function getUsuario($id)
     {
+        $db = Connection::connect();
+        $sql = "SELECT id, nombre, apellido FROM usuarios WHERE id=:id";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam('id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $usuarios = $stmt->fetch();
+        return $usuarios;
     }
     function  createUsuario()
     {
