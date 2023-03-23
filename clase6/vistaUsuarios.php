@@ -12,7 +12,8 @@ $getUsuarios = $usuarios->getUsuarios();
 
 ?>
 <main>
-    <h2>Vista de usuarios</h2>
+    <h2>Vista de usuarios</h2> 
+    <button class="crear"><a href="formCrearUsuario.php">Crear Usuario</a></button>
     <div class="car_container">
         <?php
         foreach ($getUsuarios as $usuario) {
