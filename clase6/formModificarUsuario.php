@@ -11,7 +11,7 @@ $getUsuario = $usuarios->getUsuario($id);
 ?>
 <main>
     <h2>Formurario para editar un usuario</h2>
-    <form action="modificarUsuario.php" method="post">
+    <form action="modificarUsuario.php?id=<?=$id?>" method="post">
         <input class="input" type="text" placeholder="Nombre" name="nombre" value="<?= $getUsuario["nombre"]; ?>">
         <input class="input" type="text" placeholder="Apellido" name="apellido" value="<?= $getUsuario["apellido"]; ?>">
         <button class="crear">Modificar</button>

@@ -24,8 +24,8 @@ $getUsuario = $usuarios->getUsuario($id);
             <div class="container">
                 <h4><b><?= $getUsuario["nombre"]; ?></b></h4>
                 <p><?= $getUsuario["apellido"]; ?></p>
-                <button class="modificar"><a href="formModificarUsuario.php?idUsuario=<?=$getUsuario["id"]?>">Modificar</a></button>
-                <button class="eliminar">Eliminar</button>
+                <button class="modificar"><a href="formModificarUsuario.php?idUsuario=<?= $getUsuario["id"] ?>">Modificar</a></button>
+                <button class="eliminar"><a href="eliminarUsuario.php?idUsuario=<?=$id?>">Eliminar</a></button>
             </div>
         </div>
         <?php

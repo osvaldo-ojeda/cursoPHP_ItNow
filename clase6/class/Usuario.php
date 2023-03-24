@@ -40,22 +40,54 @@ class Usuario
         // return false;
         return $stmt->execute() ? true : false;
     }
-    function updateUsuario()
+    function updateUsuario($id)
     {
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $db = Connection::connect();
-        $sql = "UPDATE usuarios(nombre, apellido) VALUES (:nombre,:apellido) ";
+        $sql = "UPDATE usuarios SET nombre=:nombre, apellido =:apellido WHERE id=:id";
+
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
-        // if ($stmt->execute()) {
-        //     return true;
-        // }
-        // return false;
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute() ? true : false;
     }
-    function deleteUsuario()
+    function deleteUsuario($id)
     {
+        $db = Connection::connect();
+        $sql = "DELETE FROM usuarios WHERE id=:id";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            header("refresh:3; url=index.php");
+            return true;
+        }
+        return false;
+    }
+
+    function login()
+    {
+        $nombre = $_POST["nombre"];
+        $apellido = $_POST["apellido"];
+        $db = Connection::connect();
+        $sql = "SELECT id, nombre, apellido FROM usuarios WHERE nombre=:nombre AND apellido=:apellido";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':apellido', $apellido, PDO::PARAM_STR);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            $usuario = $stmt->fetch();
+            session_start();
+            $_SESSION["usuarioLogeado"] = $usuario["id"];
+            header("refresh:3; url=index.php");
+        }
+
+        return false;
+    }
+
+    function logout()
+    {
+        session_destroy();
+        header("refresh:3; url=index.php");
     }
 }
